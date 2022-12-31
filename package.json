@@ -1,0 +1,20 @@
+{
+  "name": "cookies-fuzzer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --max-old-space-size=8192 index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apidevtools/swagger-parser": "^10.1.0",
+    "axios": "^1.2.1",
+    "chalk": "^5.1.2",
+    "inquirer": "^9.1.4",
+    "js-beautify": "^1.14.7",
+    "winston": "^3.8.2"
+  }
+}

@@ -1,0 +1,113 @@
+openapi: 3.0.3
+info:
+  title: Swagger Test Online Shop - OpenAPI 3.0
+  description: |-
+    This is a sample online shop Server based on the OpenAPI 3.0 specification.
+  contact:
+    email: lauk@th-branenburg.de
+  version: 1.0.11
+servers:
+  - url: http://localhost:3000
+paths:
+  /:
+    :
+      tags:
+        - online-shop
+      summary: Greet logged in user or redirect to login page.
+      description: Greet logged in user or redirect to login page.
+      operationId: greet
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+        "401":
+          description: unauthorized access.
+  /login:
+    :
+      tags:
+        - online-shop
+      summary: Check if user has logged in
+      description: Check if user has logged in
+      operationId: checkUser
+      parameters:
+        - name: status
+          in: query
+          description: The failed login status.
+          required: false
+          schema:
+            type: string
+            example: failed
+      responses:
+        "200":
+          description: OK
+          headers:
+            Strict-Transport-Security:
+              description: duration the session last.
+              schema:
+                type: integer
+                format: int32
+          content:
+            application/json:
+              schema:
+                type: string
+        "401":
+          description: Invalid username or password
+    post:
+      tags:
+        - online-shop
+      summary: Log the user into the website
+      description: Log the user into the website
+      operationId: loginUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: Successful operation
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: JSESSIONID=abcde12345; Path=/; HttpOnly
+        "401":
+          description: Invalid username or password
+  /logout:
+    get:
+      tags:
+        - online-shop
+      summary: Logs out current logged in user session.
+      description: Logs out current logged in user session.
+      operationId: logoutUser
+      parameters: []
+      responses:
+        default:
+          description: successful operation
+  /welcome:
+    get:
+      security:
+        - cookieAuth: []
+      tags:
+        - online-shop
+      summary: Welcome logged in user.
+      description: Welcome logged in user.
+      operationId: welcomeUser
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+        "401":
+          description: Unauthorized access
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: username
