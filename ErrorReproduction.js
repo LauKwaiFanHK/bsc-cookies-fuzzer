@@ -12,12 +12,9 @@ export default async function ErrorReproduction(
   if (allErrorRequestSequences.length > 0) {
     let username = usernameInput;
     let pw = pwInput;
-    let seqResultCollection = [];
-    let allSeqResults = [];
     let replayResultCollection = [];
     for (let x of allErrorRequestSequences) {
       const errorRequestSeqData = x["errorRequestSequence"];
-      // seqResultCollection["cookieSent"] = x["cookie"];
       if (errorRequestSeqData.length > 0) {
         for (let y of errorRequestSeqData) {
           let cookieToSend = x["cookie"];

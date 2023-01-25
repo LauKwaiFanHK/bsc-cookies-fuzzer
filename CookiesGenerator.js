@@ -3,7 +3,7 @@ import {
   fuzzedSeparators,
   randomCookies,
 } from "./FuzzDictionary.js";
-import { longStr } from "./longString.js";
+import { getRandomString } from "./HelperFunctions.js";
 
 export function CookiesGenerator(allNameValuePairs) {
   let newAllNameValuePairs = [];
@@ -14,10 +14,10 @@ export function CookiesGenerator(allNameValuePairs) {
     x = x.slice(0, -2);
     const cookieName = x.split("=")[0];
     const cookieValue = x.split("=")[1];
-    const longStrCookie = cookieName + "=" + longStr + "; ";
+    const longStrCookie = cookieName + "=" + getRandomString(4096*3001 ) + "; ";
     newAllNameValuePairs.push(longStrCookie);
     for (let y of fuzzedValues) {
-      const newCookieSameName = cookieName + "=" + y + "; ";
+      const newCookieSameName = cookieName + "=" + String(y) + "; ";
       newAllNameValuePairs.push(newCookieSameName);
     }
     for (let z of fuzzedSeparators) {
@@ -25,7 +25,7 @@ export function CookiesGenerator(allNameValuePairs) {
       newAllNameValuePairs.push(newCookie);
     }
     for (let a of fuzzedValues) {
-      const newCookie = a + "=" + cookieValue + "; ";
+      const newCookie = String(a) + "=" + cookieValue + "; ";
       newAllNameValuePairs.push(newCookie);
     }
     for (let b of randomCookies) {

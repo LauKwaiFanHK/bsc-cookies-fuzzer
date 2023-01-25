@@ -189,7 +189,10 @@ export default async function PreTestGenerator(
       }
     }
 
-    const allPreTestErrors = detectPreTestError(preTestResultCollection, apiData);
+    const allPreTestErrors = detectPreTestError(
+      preTestResultCollection,
+      apiData
+    );
     if (allPreTestErrors.errorArr.length > 0) {
       PreTestLogger.error(
         "Detected following API implementation errors in pre-fuzzing test. Please examine the following implementation erros in your REST API."

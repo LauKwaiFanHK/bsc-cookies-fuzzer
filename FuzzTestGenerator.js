@@ -3,7 +3,9 @@ import {
   destructureCookies,
   checkValidCookies,
   extractSetCookiesHeader,
+  truncateLongCookie,
 } from "./HelperFunctions.js";
+import { Blob } from "node:buffer";
 
 // This module send requests to all sequence permutation
 export default class FuzzTestGenerator {
@@ -62,7 +64,7 @@ export default class FuzzTestGenerator {
               );
               break;
             default:
-              requestCount = requestCount;
+              console.log("Method not yet supported.");
           }
           reqSeqResult.push(r);
           const returnedCookies = r["setCookiesHeader"];
@@ -92,6 +94,15 @@ export default class FuzzTestGenerator {
           myFuzzedCookies = nextFuzzedCookies;
         }
       }
+
+      if (myFuzzedCookies !== null && myFuzzedCookies !== undefined) {
+        if (new Blob([myFuzzedCookies]).size > 4096) {
+          myFuzzedCookies =
+            truncateLongCookie(myFuzzedCookies) +
+            (new Blob([myFuzzedCookies]).size + " bytes");
+        }
+      }
+
       fuzzTestResults.push({
         fuzzedCookie: myFuzzedCookies,
         requestSequenceId: reqSeqId,

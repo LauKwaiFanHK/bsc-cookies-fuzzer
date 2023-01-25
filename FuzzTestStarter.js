@@ -114,7 +114,7 @@ export default async function FuzzTestStarter(
           }
         }
       } else {
-        FuzzTestLogger.success(x + ": No implementation errors are detected");
+        FuzzTestLogger.success(truncateLongCookie(x) + ": No implementation errors are detected");
       }
 
       // Detect cookies misconfiguration

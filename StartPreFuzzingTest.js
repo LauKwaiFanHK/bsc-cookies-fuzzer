@@ -33,6 +33,6 @@ export async function startPreFuzzingTest(apiData, username, pw, timestamp) {
   const preTestData = await PreTestGenerator(apiData, username, pw, timestamp);
   displayPreTestResultFilePath(preTestData);
   displayPreTestServerErrorFilePath(preTestData);
-  displayPreTestOtherErrorFilePath(preTestData)
+  displayPreTestOtherErrorFilePath(preTestData);
   return preTestData;
 }

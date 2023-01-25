@@ -1,26 +1,34 @@
-// For changing value of extracted cookies
 const fuzzedValues = [
-  "fuzz", // random string
+  null,
+  undefined,
+  NaN,
+  true,
+  false,
+  BigInt(9007199254740991),
+  BigInt("0x1fffffffffffff"),
+  Symbol("foo"),
+  Symbol("bar"),
+  0,
+  -1,
+  /*  5,
+  18.4, */
+  { fuzz: "AAAA", fuzz2: "BBBB", fuzz3: "CCCC" },
+  0.000000002479,
+  7.3e9,
   "AAAAAAAAAAAAAAAAA",
-  "BBBBBBBBBBBBBBBBB",
+  /*  "BBBBBBBBBBBBBBBBB",
   "abc;defgh",
-  0, // zero
-  -1, // negative number
-  5, // integer
-  18.4, // float number
-  0.000000002479, // very small number
-  7.3e9, // very big number
-  "0 x 1000", // Integer overflows
+  "0 x 1000",
   "0 x 3fffffff",
   "0 x 7ffffffe",
   "0 x fffffffe",
   "0 x ffffffff",
-  '>"><script>alert("XSS")</script>', // Buffer overflows
+  '>"><script>alert("XSS")</script>',
   '"";!--"<XSS>=&{()}',
   "A x 5",
   "A x 257",
   "A x 12288",
-  "%s%p%x%d", // Format string errors
+  "%s%p%x%d",
   ".1024d",
   "%.2049d",
   "%p%p%p%p",
@@ -39,13 +47,13 @@ const fuzzedValues = [
   "%s x 129",
   "%x x 257",
   ".||",
-  "' OR '1'='1", // Passive SQL Injection
+  "' OR '1'='1", */
 ];
 
 const fuzzedSeparators = [
   "/",
   "==",
-  "===",
+  /*"===",
   "&",
   "~",
   "!",
@@ -72,14 +80,14 @@ const fuzzedSeparators = [
   "<",
   ">",
   ".",
-  ":",
+  ":", */
 ];
 
 const randomCookies = [
   "fuzz=randomInput; ",
-  "fuzz=AAAAAAAAAAAA; ",
+  /* "fuzz=AAAAAAAAAAAA; ",
   "user=admin; ",
-  "user=root; ",
+  "user=root; ", */
 ];
 
 export { fuzzedValues, fuzzedSeparators, randomCookies };

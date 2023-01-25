@@ -34,7 +34,12 @@ export function checkCookiesAttributes(cookiesArr, logger) {
           reassembledCookie + " --> No cookies misconfiguration detected."
         );
       } else {
-        logger.warning("Cookies misconfiguration detected | " + reassembledCookie + ' --> ' + warnMsg);
+        logger.warning(
+          "Cookies misconfiguration detected | " +
+            reassembledCookie +
+            " --> " +
+            warnMsg
+        );
       }
     }
   }
@@ -45,9 +50,7 @@ function checkSecureAttribute(parsedCookie) {
   if (parsedCookie["Secure"] === undefined) {
     return {
       Cookie: parsedCookie,
-      Warning: chalk.underline(
-        "[Secure attribute] Secure flag is not set!"
-      ),
+      Warning: chalk.underline("[Secure attribute] Secure flag is not set!"),
     };
   } else if (parsedCookie["Secure"] === false) {
     return {
@@ -69,14 +72,7 @@ function checkHttpAttribute(parsedCookie) {
     return {
       Cookie: parsedCookie,
       Warning: chalk.underline(
-        "[HttpOnly attribute] HttpOnly flag is not set!"
-      ),
-    };
-  } else if (parsedCookie["HttpOnly"] === false) {
-    return {
-      Cookie: parsedCookie,
-      Warning: chalk.underline(
-        "[HttpOnly attribute] HttpOnly flag set as false allows the cookie to be accessed and manipulated by JavaScript."
+        "[HttpOnly attribute] HttpOnly flag is not set or set as false allows the cookie to be accessed and manipulated by JavaScript."
       ),
     };
   } else {

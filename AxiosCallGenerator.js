@@ -1,4 +1,6 @@
 import axios from "axios";
+import { Blob } from "node:buffer";
+import { truncateLongCookie } from "./HelperFunctions.js";
 
 // A module to generate axios call using different http request methods
 // Record results of one test run
@@ -10,6 +12,13 @@ export default class AxiosCallGenerator {
   }
 
   generateResult(url, res, method, returnedCookies, sentCookies) {
+    if (sentCookies !== null && sentCookies !== undefined) {
+      if (new Blob([sentCookies]).size > 4096) {
+        sentCookies =
+          truncateLongCookie(sentCookies) +
+          (new Blob([sentCookies]).size + " bytes");
+      }
+    }
     this.testId++;
     const date = new Date(Date.now());
     this.testResult = {

@@ -1,3 +1,5 @@
+import { Blob } from "node:buffer";
+
 // Parse cookies into an object with name-value pairs in the cookies
 export function parseCookies(str) {
   if (str !== undefined) {
@@ -229,11 +231,21 @@ export function extractCookiesHeaderSample(
 export function truncateLongCookie(cookie) {
   let formattedCookie;
   if (cookie.length > 20) {
-    formattedCookie = cookie.slice(0, 16) + "...";
+    formattedCookie = cookie.slice(0, 40) + "...";
   } else {
     formattedCookie = cookie;
   }
   return formattedCookie;
 }
 
-findRequestSequences([1,2,3]);
+
+export function getRandomString(length) {
+  const chars =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+  const charLength = chars.length;
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * charLength));
+  }
+  return result;
+}
