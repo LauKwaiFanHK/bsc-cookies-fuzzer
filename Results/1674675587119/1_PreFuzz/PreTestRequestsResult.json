@@ -1,0 +1,82 @@
+[{
+    "testId": 1,
+    "time": "Wed Jan 25 2023 20:39:53 GMT+0100 (Central European Standard Time)",
+    "method": "get",
+    "requestedUrl": "http://localhost:3000/",
+    "sentCookies": null,
+    "statusCode": 500,
+    "responseMessage": "Internal Server Error",
+    "setCookiesHeader": null
+}, {
+    "testId": 2,
+    "time": "Wed Jan 25 2023 20:39:53 GMT+0100 (Central European Standard Time)",
+    "method": "get",
+    "requestedUrl": "http://localhost:3000/login",
+    "sentCookies": null,
+    "statusCode": 401,
+    "responseMessage": "Unauthorized",
+    "setCookiesHeader": null
+}, {
+    "testId": 3,
+    "time": "Wed Jan 25 2023 20:39:53 GMT+0100 (Central European Standard Time)",
+    "method": "post",
+    "requestedUrl": "http://localhost:3000/login",
+    "sentCookies": null,
+    "statusCode": 200,
+    "responseMessage": "OK",
+    "setCookiesHeader": "[\"username=Billy; Max-Age=86400; Path=/; Expires=Thu, 26 Jan 2023 19:39:53 GMT; HttpOnly; Secure; SameSite=Lax\"]"
+}, {
+    "testId": 4,
+    "time": "Wed Jan 25 2023 20:39:53 GMT+0100 (Central European Standard Time)",
+    "method": "get",
+    "requestedUrl": "http://localhost:3000/logout",
+    "sentCookies": null,
+    "statusCode": 404,
+    "responseMessage": "Not Found",
+    "setCookiesHeader": null
+}, {
+    "testId": 5,
+    "time": "Wed Jan 25 2023 20:39:53 GMT+0100 (Central European Standard Time)",
+    "method": "get",
+    "requestedUrl": "http://localhost:3000/welcome",
+    "sentCookies": null,
+    "statusCode": 401,
+    "responseMessage": "Unauthorized",
+    "setCookiesHeader": null
+}, {
+    "testId": 6,
+    "time": "Wed Jan 25 2023 20:39:53 GMT+0100 (Central European Standard Time)",
+    "method": "get",
+    "requestedUrl": "http://localhost:3000/",
+    "sentCookies": "username=Billy; ",
+    "statusCode": 200,
+    "responseMessage": "OK",
+    "setCookiesHeader": "[\"lang=de; Max-Age=86400; Path=/; Expires=Thu, 26 Jan 2023 19:39:53 GMT; Secure; SameSite=None\",\"test=1; Max-Age=86400; Path=/; Expires=Thu, 26 Jan 2023 19:39:53 GMT; SameSite=None\"]"
+}, {
+    "testId": 7,
+    "time": "Wed Jan 25 2023 20:39:53 GMT+0100 (Central European Standard Time)",
+    "method": "get",
+    "requestedUrl": "http://localhost:3000/login",
+    "sentCookies": "username=Billy; ",
+    "statusCode": 200,
+    "responseMessage": "OK",
+    "setCookiesHeader": null
+}, {
+    "testId": 8,
+    "time": "Wed Jan 25 2023 20:39:53 GMT+0100 (Central European Standard Time)",
+    "method": "get",
+    "requestedUrl": "http://localhost:3000/logout",
+    "sentCookies": "username=Billy; ",
+    "statusCode": 404,
+    "responseMessage": "Not Found",
+    "setCookiesHeader": null
+}, {
+    "testId": 9,
+    "time": "Wed Jan 25 2023 20:39:53 GMT+0100 (Central European Standard Time)",
+    "method": "get",
+    "requestedUrl": "http://localhost:3000/welcome",
+    "sentCookies": "username=Billy; ",
+    "statusCode": 200,
+    "responseMessage": "OK",
+    "setCookiesHeader": "[\"lang=de; Max-Age=86400; Path=/; Expires=Thu, 26 Jan 2023 19:39:53 GMT; Secure; SameSite=None\",\"test=1; Max-Age=86400; Path=/; Expires=Thu, 26 Jan 2023 19:39:53 GMT; SameSite=None\"]"
+}]
